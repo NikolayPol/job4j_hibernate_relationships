@@ -12,12 +12,15 @@ import java.util.Objects;
  * @version 1.0 24.10.2021
  */
 @Entity
-@Table(name = "model")
+@Table(name = "models")
 public class Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
 
     public static Model of(String name) {
         Model model = new Model();
@@ -41,6 +44,14 @@ public class Model {
         this.name = name;
     }
 
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -56,5 +67,14 @@ public class Model {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Model{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", brand=" + brand
+                + '}';
     }
 }

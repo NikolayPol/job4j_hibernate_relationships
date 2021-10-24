@@ -18,13 +18,13 @@ import java.util.Objects;
  * @version 1.0 24.10.2021
  */
 @Entity
-@Table(name = "brand")
+@Table(name = "brands")
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "brand", fetch = FetchType.EAGER)
     private List<Model> models = new ArrayList<>();
 
     public static Brand of(String name) {
@@ -76,5 +76,13 @@ public class Brand {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Brand{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + '}';
     }
 }
