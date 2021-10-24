@@ -9,7 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 /**
- * Класс HbmRun.
+ * Класс HbmRunOneToMany.
  *
  * Сохраняем ассоциированные модели - мы получаем список записей, которые ассоциированы
  * с объектом и уже в этот список добавляем записи, которые необходимо сохранить.
