@@ -1,0 +1,60 @@
+package model;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * Класс - модель машины.
+ *
+ * @author Nikolay Polegaev
+ * @version 1.0 24.10.2021
+ */
+@Entity
+@Table(name = "model")
+public class Model {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
+
+    public static Model of(String name) {
+        Model model = new Model();
+        model.name = name;
+        return model;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Model model = (Model) o;
+        return id == model.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+}
